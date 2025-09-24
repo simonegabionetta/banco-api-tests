@@ -1,9 +1,12 @@
+
+require('dotenv').config();
+
 const request = require('supertest');
 const { expect } = require('chai');
-require('dotenv').config();
 const { obterToken }= require('../helpers/autenticacao');
 const { beforeEach } = require('mocha');
 const postTranferencias = require('../fixtures/postTransferencias.json')
+
 
 
 describe('Transferências', () => {
@@ -44,11 +47,8 @@ describe('Transferências', () => {
                 .send(bodyTransferencias)
                 
             expect(resposta.status).to.be.equal(422);       
-            
-
-           
-        
-        
+      
+      
         })
 
     })
