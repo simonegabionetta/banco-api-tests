@@ -1,17 +1,17 @@
 const request = require('supertest');
+const postLogin = require('../fixtures/postLogin.json')
 
 
 const obterToken = async(usuario,senha) => {
 
-    const respostaLogin = await request(process.env.BASE_URL)
-        .post('/login')
-        .set('Content-Type', 'application/json')
-        .send({
-            'username': usuario,
-            'senha': senha
-            });
+const bodyLogin = {...postLogin}
 
-        return respostaLogin.body.token
+const respostaLogin = await request(process.env.BASE_URL)
+    .post('/login')
+    .set('Content-Type', 'application/json')
+    .send(bodyLogin);
+
+    return respostaLogin.body.token
 
 }
 module.exports = {
